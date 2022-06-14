@@ -49,7 +49,8 @@
     </script>
 </head>
 <body>
-	<h1 class="bg-success">Vida Nueva - Publicaciones</h1>
+	<h1 class="bg-success">Vida Nueva - Publicaciones para subir a git</h1>
+    <h4>Sistema de publaciones de 2do Informática</h4>
 
 	<div class="container">
 
