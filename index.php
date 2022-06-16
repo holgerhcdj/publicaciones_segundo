@@ -42,6 +42,7 @@
 
          	},error:(desc,estado)=>{
                 //500 401 404 200
+                alert("Un error ha sucedido"+estado);
             },
          })
 
