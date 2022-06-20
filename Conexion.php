@@ -5,7 +5,7 @@ class Conexion
 	public $conection;
 	function __construct()
 	{
-		$this->conection=mysqli_connect('localhost','root','','vnbook');
+		$this->conection=mysqli_connect('localhost','root','','vn_book');
 	}
 }
 

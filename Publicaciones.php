@@ -12,7 +12,8 @@ class Publicaciones extends Conexion
     		      	pub_fecha,
     		      	pub_hora,
     		      	pub_descripcion,
-    		      	pub_estado,pub_imagen)
+    		      	pub_estado,
+    		      	pub_imagen)
     		      values('$usuario',
     		      	'$fecha',
     		      	'$hora',
