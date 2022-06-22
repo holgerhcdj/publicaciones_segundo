@@ -6,6 +6,11 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>	
+
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> 
+
+
     <script>
      $(document).on("click","#btn_publicar",()=>{
 
@@ -59,7 +64,6 @@
       	<div class="col-md-6">
       		<input type="text" id="pub_usuario" placeholder="Usuario" class="form-control">
       		<textarea  id="pub_descripcion" rows="2" class="form-control"></textarea>
-      		<input type="file" id="pub_imagen" class="form-control" >
       		<select id="pub_estado" class="form-control bg-dark">
       			<option value="">Elija una Opcion</option>
       			<option value="Alegre">Alegre</option>
@@ -71,13 +75,22 @@
       		</div>
       	</div>
       	<div class="col-md-6">
-      		<img src="no_image.svg" width="250px" alt="">
+
+        <div class="col-md-3">
+            <form action="acciones_publicaciones.php" method="POST" 
+                  class="dropzone"  id="pub_imagen" > 
+            </form>  
+
+      		<!-- <img src="no_image.svg" width="250px" alt=""> -->
+        </div>       
+
       	</div>
       </div>
 
     <div class="row">
         <div class="col-md-4">
-            
+
+
         <div class="card cont_publicacion"  style="width: 10rem;">
               <img src="no_foto.jpg" class="card-img-top" alt="...">
               <div class="card-body">
@@ -92,6 +105,14 @@
 
 
 	</div>
-
 </body>
 </html>
+<script>
+  Dropzone.options.pub_imagen = { // camelized version of the `id`
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    accept: function(file, done) {
+    }
+
+  };
+</script>
