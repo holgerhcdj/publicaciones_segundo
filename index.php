@@ -26,6 +26,8 @@
          	success:(data)=>{
          		console.log(data);
 
+                $("#aux_id").val(data[0].pub_id);
+
                 $("#estado").text(data[0].pub_estado);
                 $("#publicacion").text(data[0].pub_descripcion);
                 if(data[0].pub_estado=='Alegre'){
@@ -78,7 +80,8 @@
 
         <div class="col-md-3">
             <form action="acciones_publicaciones.php" method="POST" 
-                  class="dropzone"  id="pub_imagen" > 
+                  class="dropzone"  id="pub_imagen" >
+                  <input type="hidden" id="aux_id" name="aux_id" value="10" > 
             </form>  
 
       		<!-- <img src="no_image.svg" width="250px" alt=""> -->
@@ -92,7 +95,7 @@
 
 
         <div class="card cont_publicacion"  style="width: 10rem;">
-              <img src="no_foto.jpg" class="card-img-top" alt="...">
+              <img src="no_foto.jpg" class="card-img-top" id="aux_img" alt="...">
               <div class="card-body">
                     <h3 id="estado">Estado</h3>
                 <p class="card-text" id="publicacion" >Descripcion</p>
@@ -111,7 +114,12 @@
   Dropzone.options.pub_imagen = { // camelized version of the `id`
     paramName: "file", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
+    maxFiles:1,
+    thumbnailWidth: 50,
+    acceptedFiles: 'image/*',
     accept: function(file, done) {
+        console.log(file+" - "+done);
+       //$("#aux_img").attr('src',);
     }
 
   };

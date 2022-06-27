@@ -34,6 +34,10 @@ class Publicaciones extends Conexion
 
     	}
 
+    	public function update_img($pub_id,$fullname){
+    		$result=$this->conection->query(" UPDATE publicaciones set pub_imagen='$fullname' where pub_id=$pub_id ");
+    	}
+
 }
 
 
