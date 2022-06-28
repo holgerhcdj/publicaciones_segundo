@@ -15,9 +15,8 @@
      $fullname=$name.".".$ext;
      move_uploaded_file($img["tmp_name"],"img/".$fullname);//
      $Publicaciones->update_img($pub_id,$fullname);
-     echo json_encode($fullname);
-
-     
+     echo $fullname;
+ 
 
 
   }else{

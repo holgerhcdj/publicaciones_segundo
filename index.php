@@ -79,12 +79,9 @@
       	<div class="col-md-6">
 
         <div class="col-md-3">
-            <form action="acciones_publicaciones.php" method="POST" 
-                  class="dropzone"  id="pub_imagen" >
-                  <input type="hidden" id="aux_id" name="aux_id" value="10" > 
-            </form>  
+          
+          <div id="dropz" class="dropzone"></div>
 
-      		<!-- <img src="no_image.svg" width="250px" alt=""> -->
         </div>       
 
       	</div>
@@ -111,16 +108,22 @@
 </body>
 </html>
 <script>
-  Dropzone.options.pub_imagen = { // camelized version of the `id`
-    paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    maxFiles:1,
-    thumbnailWidth: 50,
-    acceptedFiles: 'image/*',
-    accept: function(file, done) {
-        console.log(file+" - "+done);
-       //$("#aux_img").attr('src',);
-    }
 
-  };
+var myDropzone = new Dropzone("#dropz", {
+    url: "acciones_publicaciones.php",
+         dictDefaultMessage: 'Arrastre el archivo aquí o haga clic para cargar', // Establezca la declaración de solicitud predeterminada
+         paramName: "file", // El nombre del parámetro pasado al fondo
+    init: function () {
+        this.on("success", function (file, data) {
+            console.log(data);
+            $("#aux_img").attr('src',`img/${data}`)
+                         // Evento desencadenado por una carga exitosa
+        });
+    }
+});
+
+
+
+
+
 </script>
