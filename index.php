@@ -77,12 +77,9 @@
       		</div>
       	</div>
       	<div class="col-md-6">
-
-        <div class="col-md-3">
           
-          <div id="dropz" class="dropzone"></div>
-
-        </div>       
+          <div id="pub_img" class="dropzone"></div>
+          <input type="hidden" id="aux_id" >
 
       	</div>
       </div>
@@ -109,15 +106,20 @@
 </html>
 <script>
 
-var myDropzone = new Dropzone("#dropz", {
-    url: "acciones_publicaciones.php",
-         dictDefaultMessage: 'Arrastre el archivo aquí o haga clic para cargar', // Establezca la declaración de solicitud predeterminada
-         paramName: "file", // El nombre del parámetro pasado al fondo
+
+new Dropzone("#pub_img", {
+
+    url: 'acciones_publicaciones.php',
+    dictDefaultMessage: 'Arrastre el archivo aquí o haga clic para cargar', // Establezca la declaración de solicitud predeterminada
+    paramName: "file", // El nombre del parámetro pasado al fondo
     init: function () {
+
+        this.on("sending", function(file, xhr, formData){
+            formData.append("aux_id",$("#aux_id").val() );
+        });
+
         this.on("success", function (file, data) {
-            console.log(data);
             $("#aux_img").attr('src',`img/${data}`)
-                         // Evento desencadenado por una carga exitosa
         });
     }
 });
